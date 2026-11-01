@@ -1,0 +1,25 @@
+services:
+  postgres:
+    # Postgres 17 with the pgvector extension available (not yet enabled;
+    # CREATE EXTENSION happens in an Alembic migration, slice 0.5).
+    image: pgvector/pgvector:0.8.6-pg17
+    environment:
+      # ${VAR:?msg} makes compose fail fast with msg when VAR is unset/empty.
+      POSTGRES_USER: ${POSTGRES_USER:?set POSTGRES_USER in .env (cp .env.example .env)}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in .env (cp .env.example .env)}
+      POSTGRES_DB: ${POSTGRES_DB:?set POSTGRES_DB in .env (cp .env.example .env)}
+    ports:
+      # Bind to loopback only: reachable from this machine, not the network.
+      - "127.0.0.1:${POSTGRES_PORT:-5433}:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      # $$ escapes compose interpolation: the variables expand inside the container.
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 2s
+      timeout: 3s
+      retries: 15
+      start_period: 5s
+
+volumes:
+  pgdata:
