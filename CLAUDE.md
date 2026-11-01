@@ -18,12 +18,12 @@ The full Phase 1 build plan — project context, working agreement, tech decisio
 
 ## Current state (update as slices land)
 
-- Not yet a git repository; no root `README.md`, `.gitignore`, `Makefile`, or `docker-compose.yml` yet (slice 0.1/0.2 work).
+- Slice 0.1 done: git repo on `main` with root `README.md`, `.gitignore`, `docs/`, and a `Makefile` that has only a self-documenting `help` target (add `## description` after a target name to list it). No `docker-compose.yml` yet (slice 0.2).
 - `services/coverage_agent/` is a fresh `uv init --package` project (Python 3.12, `uv_build` backend, `src/` layout, no dependencies, no tests). Its only code is a placeholder `main()` exposed as the `coverage-agent` script.
 
 ## Commands
 
-Run from `services/coverage_agent/` until the root Makefile exists:
+From the repo root, `make help` lists Make targets (only `help` so far). Python commands run from `services/coverage_agent/` until Make targets wrap them:
 
 ```
 uv sync                  # create .venv and install

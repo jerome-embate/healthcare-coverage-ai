@@ -548,7 +548,7 @@ Rule: **measure after every change.** Record each result in `docs/retrieval-resu
 
 ## 6. Progress checklist
 
-- [ ] 0.1 Repo skeleton
+- [x] 0.1 Repo skeleton
 - [ ] 0.2 Postgres with pgvector
 - [ ] 0.3 Python project
 - [ ] 0.4 Configuration
