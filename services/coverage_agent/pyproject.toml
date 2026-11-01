@@ -1,7 +1,7 @@
 [project]
 name = "coverage-agent"
 version = "0.1.0"
-description = "Add your description here"
+description = "AI core for Healthcare Coverage AI: policy ingestion, retrieval, and case evaluation."
 readme = "README.md"
 authors = [
     { name = "Jerome Embate" }
@@ -15,3 +15,24 @@ coverage-agent = "coverage_agent:main"
 [build-system]
 requires = ["uv_build>=0.12.5,<0.13.0"]
 build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "pre-commit>=4.7.0",
+    "pytest>=9.2.0",
+    "ruff>=0.17.3",
+]
+
+[tool.ruff]
+line-length = 100
+
+[tool.ruff.lint]
+# E/F: pycodestyle + pyflakes basics; I: import sorting; UP: modern syntax; B: likely bugs.
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+# strict: unknown markers, bad config, and passing xfails become errors.
+strict = true
+# -ra: print a short summary of every non-passing test at the end.
+addopts = "-ra"

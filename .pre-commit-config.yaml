@@ -1,0 +1,12 @@
+# Git hooks managed by pre-commit. One-time install per clone:
+#   uv --directory services/coverage_agent run pre-commit install
+repos:
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    # Keep in sync with the ruff version in services/coverage_agent/uv.lock.
+    rev: v0.17.3
+    hooks:
+      - id: ruff-check
+        args: [--fix]
+        files: ^services/coverage_agent/
+      - id: ruff-format
+        files: ^services/coverage_agent/

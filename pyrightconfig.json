@@ -1,0 +1,11 @@
+{
+  // Read by Pylance (VS Code/Cursor) and the pyright CLI.
+  // The workspace is opened at the repo root, but the Python project lives in
+  // services/coverage_agent. Point the type checker at that project's uv venv,
+  // where coverage_agent is installed (editable, from src/).
+  "venvPath": "services/coverage_agent",
+  "venv": ".venv",
+  // Same strictness as the editor's "python.analysis.typeCheckingMode" setting,
+  // which this file overrides.
+  "typeCheckingMode": "basic"
+}

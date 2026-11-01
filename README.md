@@ -6,11 +6,12 @@ Healthcare Coverage AI is a prior authorization copilot. A clinic's prior auth c
 
 ## Run locally
 
-Requires Docker.
+Requires Docker and [uv](https://docs.astral.sh/uv/).
 
 ```sh
 cp .env.example .env   # then set POSTGRES_PASSWORD
 make up                # Postgres 17 + pgvector on localhost:5433, returns when healthy
 make psql              # psql shell inside the container
+make lint && make test # Python lint/format check + tests (needs uv)
 make help              # all targets
 ```

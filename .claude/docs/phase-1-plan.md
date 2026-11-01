@@ -550,7 +550,7 @@ Rule: **measure after every change.** Record each result in `docs/retrieval-resu
 
 - [x] 0.1 Repo skeleton
 - [x] 0.2 Postgres with pgvector
-- [ ] 0.3 Python project
+- [x] 0.3 Python project
 - [ ] 0.4 Configuration
 - [ ] 0.5 Database layer and migrations
 - [ ] 0.6 LLM wrapper, cache, tracing
